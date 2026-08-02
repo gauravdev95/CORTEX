@@ -104,7 +104,7 @@ The backend is a FastAPI application that owns workflows, incidents, recovery or
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/gaurav-opensource/CORTEX.git
+git clone https://github.com/gauravdev95/CORTEX.git
 cd cortex
 ```
 
@@ -1229,8 +1229,8 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ## 🙋 Support
 
-- **Bug Reports**: [GitHub Issues](https://github.com/gaurav-opensource/CORTEX/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/gaurav-opensource/CORTEXdiscussions)
+- **Bug Reports**: [GitHub Issues](https://github.com/gauravdev95/CORTEX/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/gauravdev95/CORTEX/discussions)
 - **Email**: support@cortex.dev
 
 ---

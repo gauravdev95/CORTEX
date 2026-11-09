@@ -1,8 +1,9 @@
 from uuid import UUID
 
-from fastapi import APIRouter, BackgroundTasks
+from fastapi import APIRouter, BackgroundTasks, Depends
 
 from app.core.exceptions import CortexError
+from app.core.security import require_api_key
 from app.schemas.workflow import MetricSnapshot, RecoveryRequest, RecoveryResult, Severity, Workflow
 from app.services.recovery_service import recovery_service
 from app.services.runtime_service import runtime_service
@@ -29,7 +30,7 @@ async def get_workflow(workflow_id: UUID) -> Workflow:
     return workflow
 
 
-@router.post("/{workflow_id}/fail", response_model=Workflow)
+@router.post("/{workflow_id}/fail", response_model=Workflow, dependencies=[Depends(require_api_key)])
 async def fail_workflow(workflow_id: UUID, background_tasks: BackgroundTasks, auto_recover: bool = True) -> Workflow:
     workflow = await runtime_service.inject_failure(workflow_id, auto_recover=False)
     if workflow is None:
@@ -42,6 +43,6 @@ async def fail_workflow(workflow_id: UUID, background_tasks: BackgroundTasks, au
     return workflow
 
 
-@router.post("/{workflow_id}/recover", response_model=RecoveryResult)
+@router.post("/{workflow_id}/recover", response_model=RecoveryResult, dependencies=[Depends(require_api_key)])
 async def recover_workflow(workflow_id: UUID) -> RecoveryResult:
     return await recovery_service.recover(RecoveryRequest(workflow_id=workflow_id, severity=Severity.HIGH))

@@ -17,6 +17,12 @@ class Settings(BaseSettings):
     ])
     enable_testing_routes: bool = False
 
+    # API key guarding mutation endpoints (POST /fail, /recover, /recovery,
+    # /sandbox/inject-failure). Empty (default) means the guard is OFF — local
+    # dev and the demo sandbox work without a key. Set CORTEX_API_KEY to any
+    # non-empty value to require `X-API-Key: <key>` on those routes.
+    cortex_api_key: str = ""
+
     hydradb_api_key: str | None = None
     hydradb_project_id: str = "cortex-local"
     grok_api_key: str | None = None

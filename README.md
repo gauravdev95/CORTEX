@@ -20,20 +20,19 @@
 [![Vite](https://img.shields.io/badge/Vite-5.0%2B-646cff?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![xAI Grok](https://img.shields.io/badge/xAI-Grok%20Integrated-000000?style=flat-square&logo=x&logoColor=white)](#)
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-22c55e?style=flat-square)](#)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-6366f1?style=flat-square)](#-contributing)
 
 <br/>
 
 # CORTEX
 
-### Self-Healing Autonomous Workflow Recovery Platform
+### Autonomous 7-Agent Infrastructure Self-Healing Simulation & Observability Engine
 
-*An enterprise-grade AI orchestration system that autonomously detects, diagnoses, and recovers from infrastructure failures using a six-agent reasoning pipeline, persistent vector memory, and real-time observability.*
+*An autonomous 7-agent infrastructure self-healing simulation and observability engine that detects, diagnoses, and recovers from infrastructure failures using a seven-agent reasoning pipeline, persistent vector memory, and real-time observability.*
 
 <br/>
 
-**[Quick Start](#-quick-start)** · **[Architecture](#-architecture)** · **[Agent Pipeline](#-the-six-agent-recovery-pipeline)** · **[API Reference](#-api-reference)** · **[Deployment](#-deployment)** · **[Configuration](#-configuration)**
+**[Quick Start](#-quick-start)** · **[Architecture](#-architecture)** · **[Agent Pipeline](#-the-seven-agent-recovery-pipeline)** · **[API Reference](#-api-reference)** · **[Deployment](#-deployment)** · **[Configuration](#-configuration)**
 
 </div>
 
@@ -45,7 +44,7 @@
 - [What Makes CORTEX Unique](#-what-makes-cortex-unique)
 - [Quick Start](#-quick-start)
 - [Architecture](#-architecture)
-- [The Six-Agent Recovery Pipeline](#-the-six-agent-recovery-pipeline)
+- [The Seven-Agent Recovery Pipeline](#-the-seven-agent-recovery-pipeline)
 - [End-to-End Recovery Flow](#-end-to-end-recovery-flow)
 - [Data Model](#-data-model)
 - [Dashboard & Frontend](#-dashboard--frontend)
@@ -90,7 +89,7 @@ The backend is a FastAPI application that owns workflows, incidents, recovery or
 | 📡 **Real-Time Observability** | Four WebSocket channels stream agent execution, metrics, reasoning, and events live to the dashboard |
 | ♻️ **Checkpoint & Rollback** | Automatic safe-point checkpointing before every recovery attempt, with intelligent rollback on failure |
 | 🔀 **Hybrid Resilience** | Works fully without external services — HydraDB and Grok are optional; in-memory and local fallback reasoning ensure 100% availability |
-| 🏗️ **Enterprise-Grade API** | REST API under `/api/v1` with 40+ endpoints across workflows, recovery, incidents, analytics, memory, and reasoning |
+| 🏗️ **REST API** | REST API under `/api/v1` with 40+ endpoints across workflows, recovery, incidents, analytics, memory, and reasoning |
 
 ---
 
@@ -235,7 +234,7 @@ On startup, `app/main.py` initializes all core systems in this exact order:
 
 ---
 
-## 🤖 The Six-Agent Recovery Pipeline
+## 🤖 The Seven-Agent Recovery Pipeline
 
 Each recovery attempt runs agents sequentially. Every agent publishes its reasoning over WebSocket in real time.
 

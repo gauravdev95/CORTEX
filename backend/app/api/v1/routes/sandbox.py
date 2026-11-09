@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from uuid import UUID
 
-from fastapi import APIRouter, BackgroundTasks, HTTPException, status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, status
 
 from app.core.events import FailureInjectionEvent, FailureInjectionRequest, FailureType
 from app.core.logging import get_logger
+from app.core.security import require_api_key
 from app.schemas.workflow import RecoveryRequest, Severity
 from app.services.metrics_service import metrics_service
 from app.services.recovery_service import recovery_service
@@ -44,7 +45,7 @@ async def _resolve_workflow_id(raw: str) -> UUID:
         return match.id
 
 
-@router.post("/inject-failure", status_code=status.HTTP_202_ACCEPTED)
+@router.post("/inject-failure", status_code=status.HTTP_202_ACCEPTED, dependencies=[Depends(require_api_key)])
 async def inject_failure(request: FailureInjectionRequest, background_tasks: BackgroundTasks) -> dict[str, str | bool]:
     logger.info("sandbox_inject_api_hit workflow_id=%s failure=%s", request.workflow_id, request.failure_type.value)
     if request.failure_type.value not in SUPPORTED_FAILURES:

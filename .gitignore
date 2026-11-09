@@ -16,3 +16,5 @@ server.err.log
 server.out.log
 server314.err.log
 server314.out.log
+
+*.log
